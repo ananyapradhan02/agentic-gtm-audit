@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>agentic gtm audit</title>
+  <meta name="description" content="A twelve-question self-audit for B2B teams selling AI agents. Returns a scorecard per area and three next moves. Nothing leaves your browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="app.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <a class="wordmark" href="./">gtm <em>audit</em></a>
+      <nav>
+        <a href="#form">questions</a>
+        <a href="#scorecard">scorecard</a>
+        <button class="pill theme-toggle" id="theme" type="button" aria-label="toggle theme">theme</button>
+      </nav>
+    </header>
+
+    <section class="section enter">
+      <h1>is your go-to-market ready <em>for agents?</em></h1>
+      <p class="dek">twelve questions for founders, cmos and gtm leads selling ai agents to enterprises. pick the answer that describes where you are today, not where the deck says you are. you get a stamp per area and three next moves.</p>
+      <p class="caption">about five minutes. answers stay in this browser; the share link carries them in the url, not on a server.</p>
+    </section>
+
+    <section class="section" id="form" aria-label="questions">
+      <div class="progress-row">
+        <p class="label">questions <span class="count" id="progress">00/12</span></p>
+      </div>
+      <form id="audit" novalidate></form>
+      <div class="row form-actions">
+        <button class="pill primary" type="button" id="see">see scorecard</button>
+        <button class="pill" type="button" id="reset">start over</button>
+        <span class="mono muted" id="remaining"></span>
+      </div>
+    </section>
+
+    <section class="section" id="scorecard" aria-live="polite">
+      <p class="label">scorecard <span class="count" id="stamp-date"></span></p>
+      <div id="result">
+        <p class="empty">answer all twelve questions and your scorecard appears here.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <ol class="sitemap">
+        <li><a href="#form">questions</a></li>
+        <li><a href="#scorecard">scorecard</a></li>
+        <li><a href="https://github.com/ananyapradhan02/agentic-gtm-audit" target="_blank" rel="noopener">source</a></li>
+        <li><a href="https://github.com/ananyapradhan02" target="_blank" rel="noopener">more prototypes</a></li>
+      </ol>
+      <p class="colophon">set in newsreader, figtree and ibm plex mono. no analytics. © ananya pradhan</p>
+    </footer>
+  </div>
+  <script>
+    document.getElementById('theme').addEventListener('click', function () {
+      var root = document.documentElement;
+      var dark = root.getAttribute('data-theme') === 'dark' ||
+        (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var next = dark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

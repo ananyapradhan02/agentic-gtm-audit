@@ -1,0 +1,1 @@
+- v0.1 · 29.09.26 · twelve-question self-audit across five areas, stamped scorecard, three rule-based next moves, share link in the url hash, copy as text

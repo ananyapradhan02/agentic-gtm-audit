@@ -1,0 +1,78 @@
+/* agentic gtm audit: project rules, tokens only */
+
+.progress-row { display: flex; justify-content: space-between; align-items: baseline; }
+
+#audit fieldset { max-width: 52rem; }
+#audit legend .count { vertical-align: baseline; margin-left: .6em; letter-spacing: 0; }
+
+.q { margin: 0 0 var(--s2); }
+.q:last-child { margin-bottom: 0; }
+.q-text {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 0 .6em;
+  text-transform: lowercase;
+}
+.q-text .mono { color: var(--text-3); margin-right: .6em; font-weight: 400; }
+
+.opts { display: grid; gap: 4px; }
+.opt {
+  display: flex;
+  gap: .7em;
+  align-items: flex-start;
+  margin: 0;
+  padding: .6em .8em;
+  font-size: .92rem;
+  line-height: 1.4;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.opt:hover { border-color: var(--green-mid); }
+.opt.on { background: var(--tint-1); border-color: var(--ink); }
+.opt input {
+  width: auto;
+  flex: none;
+  margin: .2em 0 0;
+  padding: 0;
+  accent-color: var(--green-mid);
+}
+.opt span { min-width: 0; }
+
+.form-actions { margin-top: var(--s2); }
+
+/* scorecard */
+.summary { margin-bottom: var(--s2); }
+.summary .mono { color: var(--text-2); }
+.area-card { display: flex; flex-direction: column; gap: .6em; }
+.area-head { display: flex; justify-content: space-between; align-items: center; gap: var(--s1); }
+.area-head h3 { margin: 0; }
+.area-score { color: var(--text-3); }
+.bar { height: 4px; background: var(--rule); }
+.bar i { display: block; height: 100%; background: var(--ink); }
+.area-card p { margin: 0; font-family: var(--serif); font-size: 1.02rem; line-height: 1.45; color: var(--text-2); }
+
+.moves { margin-top: var(--s3); }
+.moves ol { list-style: none; padding: 0; margin: 0; counter-reset: mv; max-width: var(--measure); }
+.moves li {
+  counter-increment: mv;
+  display: grid;
+  grid-template-columns: 2.2em 1fr;
+  gap: .4em;
+  padding: .8em 0;
+  border-bottom: 1px solid var(--rule);
+}
+.moves li::before { content: counter(mv, decimal-leading-zero); font-family: var(--mono); font-size: .74rem; color: var(--text-3); padding-top: .35em; }
+.moves .why { display: block; font-family: var(--mono); font-size: .74rem; color: var(--text-3); margin-top: .3em; }
+
+.share { margin-top: var(--s3); }
+.share-status { color: var(--text-3); }
+#fallback { margin-top: var(--s1); font-family: var(--mono); font-size: .8rem; }
+#fallback[hidden] { display: none; }
+
+@media (max-width: 480px) {
+  #audit fieldset { padding: var(--s1); }
+  .opt { font-size: .9rem; }
+}
