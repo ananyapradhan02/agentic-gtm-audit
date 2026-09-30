@@ -1,1 +1,2 @@
+- v0.2 · 30.09.26 · printable report (print stylesheet, one a4 page with the date and share link in the footer, "print or save as pdf" pill); "talk it through with ananya" line after the moves linking to a 30-minute call; calendly and email in the footer sitemap; version in the colophon
 - v0.1 · 29.09.26 · twelve-question self-audit across five areas, stamped scorecard, three rule-based next moves, share link in the url hash, copy as text

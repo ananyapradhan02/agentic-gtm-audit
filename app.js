@@ -1,4 +1,4 @@
-/* agentic gtm audit v0.1
+/* agentic gtm audit v0.2
    Everything here is scripted rules: fixed scores per answer, fixed thresholds,
    a fixed bank of diagnoses and next moves. No model, no server, no tracking. */
 (function () {
@@ -341,14 +341,19 @@
       var why = m.q === null ? m.area.name + ' · stretch' : m.area.name + ' · from question ' + pad(displayNo[m.q]);
       html += '<li><div class="prose">' + esc(m.text) + '<span class="why">' + esc(why) + '</span></div></li>';
     });
-    html += '</ol></div>';
+    html += '</ol>' +
+      '<p class="talk">talk it through with ananya: <a href="https://calendly.com/ananyapradhan/30min" target="_blank" rel="noopener">book a 30-minute call</a></p></div>';
 
     html += '<div class="share"><p class="label">share with your team</p>' +
       '<div class="row"><button class="pill primary" type="button" id="copy-link">copy link</button>' +
       '<button class="pill" type="button" id="copy-text">copy as text</button>' +
+      '<button class="pill" type="button" id="print">print or save as pdf</button>' +
       '<span class="mono share-status" id="share-status" role="status"></span></div>' +
       '<input id="fallback" type="text" readonly hidden aria-label="share link">' +
       '<p class="caption">the link carries your answers in the url itself. nothing is stored on a server.</p></div>';
+
+    /* only shown when printing: date and the share link, so the paper leads back to the live scorecard */
+    html += '<p class="print-foot mono">agentic gtm audit · ' + today() + ' · ' + esc(shareUrl()) + '</p>';
 
     setHTML(result, html);
     return s;
@@ -427,6 +432,7 @@
     if (!t || !current) return;
     if (t.id === 'copy-link') copy(shareUrl(), 'link copied');
     if (t.id === 'copy-text') copy(asText(current), 'text copied');
+    if (t.id === 'print') window.print();
   });
 
   document.getElementById('see').addEventListener('click', function () {

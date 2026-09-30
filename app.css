@@ -76,3 +76,48 @@
   #audit fieldset { padding: var(--s1); }
   .opt { font-size: .9rem; }
 }
+
+.talk { margin: var(--s2) 0 0; font-size: .92rem; color: var(--text-2); }
+.print-foot { display: none; }
+
+/* printable report: scorecard and three moves on one a4 page */
+@media print {
+  @page { size: A4; margin: 12mm 14mm; }
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    --ink: #123524;
+    --ink-rgb: 18, 53, 36;
+    --paper: #f6f4ec;
+    --paper-2: #efeee4;
+    --tint-1: #e5ede7;
+    --green-mid: #2f6b4f;
+    --rust: #b8452a;
+    color-scheme: light;
+  }
+  html, body { background: #f6f4ec; font-size: 11px; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .container { max-width: none; padding: 0; }
+  .topbar, .section:not(#scorecard), footer.footer, .share, .talk { display: none !important; }
+  .section { padding: 0; }
+  .section + .section { border-top: 0; }
+  .label { margin-bottom: .8em; }
+  .summary { margin-bottom: .8em; }
+  .cards { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .card { padding: .8em; break-inside: avoid; }
+  .area-card { gap: .35em; }
+  .area-card h3 { font-size: 1.05rem; }
+  .area-card p { font-size: .95rem; line-height: 1.35; }
+  .moves { margin-top: 1.4em; break-inside: avoid; }
+  .moves h2 { font-size: 1.6rem; margin-bottom: .3em; }
+  .moves ol { max-width: none; }
+  .moves li { padding: .5em 0; }
+  .moves .prose { font-size: 1.05rem; line-height: 1.4; max-width: none; }
+  .print-foot {
+    display: block;
+    margin: 1.4em 0 0;
+    padding-top: .6em;
+    border-top: 1px solid var(--rule);
+    color: var(--text-2);
+    overflow-wrap: anywhere;
+  }
+  a { text-decoration: none; }
+}
